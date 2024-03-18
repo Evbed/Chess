@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Cell : MonoBehaviour
@@ -9,12 +10,14 @@ public class Cell : MonoBehaviour
         _figure = figure;
     }
 
-    public Figure TryGetFigure()
+    public void ClearFigure()
     {
-        if (_figure == null)
-        {
-            return null;
-        }
+        _figure = null;
+    }
+
+    [CanBeNull]
+    public Figure GetFigureOrNull()
+    {
         return _figure;
     }
 }
