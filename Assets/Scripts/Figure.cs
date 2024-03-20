@@ -1,24 +1,11 @@
-using DefaultNamespace;
 using UnityEngine;
 
-public class Figure : MonoBehaviour
+namespace DefaultNamespace
 {
-	[SerializeField] private FigureColor color;
-	[SerializeField] private FigureType type;
-	[SerializeField] private Vector2Int startPosition;
-
-	public void Init()
+	public class Figure
 	{
-		transform.position = new Vector3(startPosition.x, 0,startPosition.y) * 1.5f;
-	}
-
-	public FigureColor GetColor()
-	{
-		return color;
-	}
-
-	public FigureType GetType()
-	{
-		return type;
+		private FigureColor _color;
+		private FigureType _type;
+		private Vector2Int _position;
 	}
 }

@@ -5,18 +5,24 @@ public class Game : MonoBehaviour
 {
     private Board _board;
     private Player[] _players;
-    [SerializeField ]private Figure[] figures;
 
     private void Start()
     {
         Run();
     }
 
-    public void Run()
+    private void Run()
     {
-        foreach (Figure f in figures)
+        Rules rules = new Rules();
+        
+        foreach (var pair in rules.Whites)
         {
-            f.Init();
+            Debug.Log("White figure " + pair.Value + " placed to " + pair.Key);
+        }
+        
+        foreach (var pair in rules.Blacks)
+        {
+            Debug.Log("Black figure " + pair.Value + " placed to " + pair.Key);
         }
     }
     
