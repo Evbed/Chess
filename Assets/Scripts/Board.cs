@@ -1,8 +1,11 @@
+using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
-public class Board : MonoBehaviour
+public class Board : IBoard
 {
     private Cell[,] _cells;
+    private List<Figure> figures;
     
     public Cell GetCell(int x, int y)
     {
