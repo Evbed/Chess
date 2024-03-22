@@ -1,5 +1,7 @@
 using System.Collections.Generic;
-using DefaultNamespace;
+using Boards;
+using Figures;
+using Players;
 using UnityEngine;
 
 public class Game : MonoBehaviour
@@ -15,7 +17,7 @@ public class Game : MonoBehaviour
 
     private void Run()
     {
-        Rules rules = new Rules();
+        Rules.Rules rules = new Rules.Rules();
         
         foreach (var pair in rules.Whites)
         {

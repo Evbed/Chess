@@ -1,28 +1,24 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-
-namespace DefaultNamespace
+public class Input : IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-	public class Input : IPointerDownHandler, IPointerUpHandler, IDragHandler
+	public void OnPointerDown(PointerEventData eventData)
 	{
-		public void OnPointerDown(PointerEventData eventData)
-		{
-			Ray ray = Camera.main.ScreenPointToRay(eventData.position); 
+		Ray ray = Camera.main.ScreenPointToRay(eventData.position); 
 
-			if (Physics.Raycast(ray, out RaycastHit hit))
-			{
-				Debug.Log(hit.collider.gameObject.name);
-			}
-		}
-		
-		public void OnPointerUp(PointerEventData eventData)
+		if (Physics.Raycast(ray, out RaycastHit hit))
 		{
-			
+			Debug.Log(hit.collider.gameObject.name);
 		}
+	}
 		
-		public void OnDrag(PointerEventData eventData)
-		{
+	public void OnPointerUp(PointerEventData eventData)
+	{
 			
-		}
+	}
+		
+	public void OnDrag(PointerEventData eventData)
+	{
+			
 	}
 }

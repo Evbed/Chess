@@ -1,4 +1,4 @@
-namespace DefaultNamespace
+namespace Players
 {
 	public interface IPlayer
 	{

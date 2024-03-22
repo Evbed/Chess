@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace DefaultNamespace
+namespace Players
 {
 	public class Player : IPlayer
 	{

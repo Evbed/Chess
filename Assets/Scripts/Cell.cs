@@ -1,4 +1,4 @@
-using DefaultNamespace;
+using Figures;
 using JetBrains.Annotations;
 using UnityEngine;
 
