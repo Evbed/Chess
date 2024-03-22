@@ -1,8 +1,8 @@
-namespace Players
+namespace Core.Players
 {
 	public class Player : IPlayer
 	{
-		public void Move()
+		public void AskMove()
 		{
 			throw new System.NotImplementedException();
 		}

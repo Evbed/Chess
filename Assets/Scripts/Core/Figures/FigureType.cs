@@ -1,4 +1,4 @@
-namespace Figures
+namespace Core.Figures
 {
 	public enum FigureType
 	{
