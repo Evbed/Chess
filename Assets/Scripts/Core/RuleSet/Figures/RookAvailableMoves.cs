@@ -9,7 +9,49 @@ namespace Core.RuleSet.Figures
 
         public IReadOnlyCollection<Vector2Int> MovesFor(Vector2Int coordinate, IBoard board)
         {
-            throw new System.NotImplementedException();
+            List<Vector2Int> directions = new List<Vector2Int>();
+            var size = board.Size;
+
+            for (int i = 1; i < size; i++)
+            {
+                var additionalCoordinate = new Vector2Int(0, i);
+                var finalCoordinate = additionalCoordinate + coordinate;
+                
+                if (Rules.InsideBoard (board, finalCoordinate)){
+                    directions.Add(finalCoordinate);
+                }
+            }
+            
+            for (int i = 1; i < size; i++)
+            {
+                var additionalCoordinate = new Vector2Int(0, -i);
+                var finalCoordinate = additionalCoordinate + coordinate;
+                
+                if (Rules.InsideBoard (board, finalCoordinate)){
+                    directions.Add(finalCoordinate);
+                }
+            }
+            
+            for (int i = 1; i < size; i++)
+            {
+                var additionalCoordinate = new Vector2Int(i, 0);
+                var finalCoordinate = additionalCoordinate + coordinate;
+                
+                if (Rules.InsideBoard (board, finalCoordinate)){
+                    directions.Add(finalCoordinate);
+                }
+            }
+            
+            for (int i = 1; i < size; i++)
+            {
+                var additionalCoordinate = new Vector2Int(-i, 0);
+                var finalCoordinate = additionalCoordinate + coordinate;
+                
+                if (Rules.InsideBoard (board, finalCoordinate)){
+                    directions.Add(finalCoordinate);
+                }
+            }
+            return directions;
         }
     }
 }

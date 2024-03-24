@@ -7,5 +7,6 @@ namespace Core.RuleSet
 	public interface IAvailableMoves
 	{
 		IReadOnlyCollection<Vector2Int> MovesFor(Vector2Int coordinate, IBoard board);
+		
 	}
 }

@@ -8,6 +8,12 @@ namespace Core.RuleSet
     public class Rules : IRules
     {
         public IAvailableMoves AvailableMoves { get; }
+        
+        public static bool InsideBoard(IBoard board, Vector2Int coordinate)
+        {
+            return coordinate.x < board.Size && coordinate.y < board.Size 
+                && coordinate.x >= 0 && coordinate.y >= 0;
+        }
 
         public Rules(IAvailableMoves availableMoves)
         {
