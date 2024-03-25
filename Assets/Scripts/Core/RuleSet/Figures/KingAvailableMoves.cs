@@ -6,9 +6,16 @@ namespace Core.RuleSet.Figures
 {
     public class KingAvailableMoves : IAvailableMoves
     {
+        private readonly IAvailableMoves availableMoves;
+
+        public KingAvailableMoves()
+        {
+            availableMoves = new DistanceLimitAvailableMoves(new QueenAvailableMoves());
+        }
+        
         public IReadOnlyCollection<Vector2Int> MovesFor(Vector2Int coordinate, IBoard board)
         {
-            throw new System.NotImplementedException();
+            return availableMoves.MovesFor(coordinate, board);
         }
     }
 }
