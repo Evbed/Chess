@@ -13,44 +13,34 @@ namespace Core.RuleSet.Figures
 
             for (int i = 1; i < size; i++)
             {
-                var additionalCoordinate = new Vector2Int(i,i);
+                var additionalCoordinate = new Vector2Int(i, i);
                 var finalCoordinate = additionalCoordinate + coordinate;
 
-                if (Rules.InsideBoard (board, finalCoordinate)){
-                    directions.Add(finalCoordinate);
-                }
+                directions.Add(finalCoordinate);
             }
-            
+
             for (int i = 1; i < size; i++)
             {
-                var additionalCoordinate = new Vector2Int(i,i);
+                var additionalCoordinate = new Vector2Int(i, i);
                 var finalCoordinate = additionalCoordinate - coordinate;
 
-                if (Rules.InsideBoard (board, finalCoordinate)){
-                    directions.Add(finalCoordinate);
-                }
+                directions.Add(finalCoordinate);
             }
-            
+
             for (int i = 1; i < size; i++)
             {
-                var additionalCoordinate = new Vector2Int(i,-i);
+                var additionalCoordinate = new Vector2Int(i, -i);
                 var finalCoordinate = additionalCoordinate + coordinate;
-
-                if (Rules.InsideBoard (board, finalCoordinate)){
-                    directions.Add(finalCoordinate);
-                }
+                directions.Add(finalCoordinate);
             }
-            
+
             for (int i = 1; i < size; i++)
             {
-                var additionalCoordinate = new Vector2Int(i,-i);
+                var additionalCoordinate = new Vector2Int(i, -i);
                 var finalCoordinate = additionalCoordinate - coordinate;
-
-                if (Rules.InsideBoard (board, finalCoordinate)){
-                    directions.Add(finalCoordinate);
-                }
+                directions.Add(finalCoordinate);
             }
-            
+
             return directions;
         }
     }
