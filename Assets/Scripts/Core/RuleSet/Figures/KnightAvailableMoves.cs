@@ -9,41 +9,39 @@ namespace Core.RuleSet.Figures
         public IReadOnlyCollection<Vector2Int> MovesFor(Vector2Int coordinate, IBoard board)
         {
             List<Vector2Int> directions = new List<Vector2Int>();
-         
             Vector2Int move = new Vector2Int(1, 2);
-            directions.Add(move);
-
-            foreach (var m in RotateAndMirror(move))
+            directions.AddRange(RotatedAndMirroredMoves(move));
+            for (var i = 0; i < directions.Count; i++)
             {
-                directions.Add(m);
+                directions[i] += coordinate;
             }
-            
+
             return directions;
         }
-        
-        private List<Vector2Int> RotateAndMirror(Vector2Int vector)
+
+        private static IReadOnlyCollection<Vector2Int> RotatedAndMirroredMoves(in Vector2Int move)
         {
-            List<Vector2Int> rotationsAndMirror = new List<Vector2Int>();
-            
-            //mirror original move
-            rotationsAndMirror.Add(new Vector2Int(-vector.x, -vector.y));
+            var list = new List<Vector2Int>();
 
-            //90 deg
-            Vector2Int rotated90 = new Vector2Int(vector.y, -vector.x);
-            rotationsAndMirror.Add(rotated90);
-            rotationsAndMirror.Add(new Vector2Int(-rotated90.x, rotated90.y)); 
+            static Vector2Int Rotated90(Vector2Int vector)
+            {
+                return new Vector2Int(-vector.y, vector.x);
+            }
 
-            //180 deg
-            Vector2Int rotated180 = new Vector2Int(-vector.x, -vector.y);
-            rotationsAndMirror.Add(rotated180);
-            rotationsAndMirror.Add(new Vector2Int(-rotated180.x, rotated180.y)); 
+            void AddRotated(Vector2Int currentVector)
+            {
+                for (var i = 0; i < 4; i++)
+                {
+                    currentVector = Rotated90(currentVector);
+                    list!.Add(currentVector);
+                }
+            }
 
-            //270 deg
-            Vector2Int rotated270 = new Vector2Int(-vector.y, vector.x);
-            rotationsAndMirror.Add(rotated270);
-            rotationsAndMirror.Add(new Vector2Int(-rotated270.x, rotated270.y)); 
+            var mirrored = new Vector2Int(-move.x, move.y);
+            AddRotated(move);
+            AddRotated(mirrored);
 
-            return rotationsAndMirror;
+            return list;
         }
     }
 }
