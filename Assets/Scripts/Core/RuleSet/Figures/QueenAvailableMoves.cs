@@ -11,10 +11,11 @@ namespace Core.RuleSet.Figures
 
         public QueenAvailableMoves()
         {
-            availableMoves = new SeveralAvailableMoves(
+            availableMoves = new ObstacleLimitAvailableMoves(
+                new SeveralAvailableMoves(
                 new BishopAvailableMoves(),
                 new RookAvailableMoves()
-            );
+            ));
         }
 
         public IReadOnlyCollection<Vector2Int> MovesFor(Vector2Int coordinate, IBoard board)

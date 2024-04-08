@@ -10,7 +10,9 @@ namespace Core.RuleSet.Figures
 
         public KingAvailableMoves()
         {
-            availableMoves = new DistanceLimitAvailableMoves(new QueenAvailableMoves());
+            availableMoves = new ObstacleLimitAvailableMoves(
+                new DistanceLimitAvailableMoves(
+                    new QueenAvailableMoves()));
         }
         
         public IReadOnlyCollection<Vector2Int> MovesFor(Vector2Int coordinate, IBoard board)
