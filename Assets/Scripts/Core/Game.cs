@@ -22,18 +22,24 @@ namespace Core
         public Game(IPlayer[] players) : this(
             new Board(),
             new Rules(
-                new BoardLimitAvailableMoves(
-                    new MapAvailableMoves(
-                        new Dictionary<FigureType, IAvailableMoves>
-                        {
-                            [FigureType.Pawn] = new PawnAvailableMoves(),
-                            [FigureType.Rook] = new RookAvailableMoves(),
-                            [FigureType.Knight] = new KnightAvailableMoves(),
-                            [FigureType.Bishop] = new BishopAvailableMoves(),
-                            [FigureType.Queen] = new QueenAvailableMoves(),
-                            [FigureType.King] = new KingAvailableMoves()
-                        }
-                    )
+                new ObstacleLimitAvailableMoves(
+                    new BoardLimitAvailableMoves(
+                        new MapAvailableMoves(
+                            new Dictionary<FigureType, IAvailableMoves>
+                            {
+                                [FigureType.Pawn] = new PawnAvailableMoves(),
+                                [FigureType.Rook] = new RookAvailableMoves(),
+                                [FigureType.Knight] = new KnightAvailableMoves(),
+                                [FigureType.Bishop] = new BishopAvailableMoves(),
+                                [FigureType.Queen] = new QueenAvailableMoves(),
+                                [FigureType.King] = new KingAvailableMoves()
+                            }
+                        )
+                    ),
+                    new[]
+                    {
+                        FigureType.Knight
+                    }
                 )
             ),
             players

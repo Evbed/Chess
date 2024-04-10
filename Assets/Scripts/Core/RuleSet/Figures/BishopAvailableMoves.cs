@@ -11,10 +11,10 @@ namespace Core.RuleSet.Figures
 
         public BishopAvailableMoves()
         {
-            availableMoves = new ObstacleLimitAvailableMoves(
-                new DefaultAvailableMoves(((coordinate, board) =>
+            availableMoves = new DefaultAvailableMoves(
+                (coordinate, board) =>
                 {
-                    List<Vector2Int> directions = new List<Vector2Int>();
+                    var directions = new List<Vector2Int>();
                     var size = board.Size;
 
                     for (int i = 1; i < size; i++)
@@ -48,9 +48,10 @@ namespace Core.RuleSet.Figures
                     }
 
                     return directions;
-                })));
+                }
+            );
         }
-        
+
         public IReadOnlyCollection<Vector2Int> MovesFor(Vector2Int coordinate, IBoard board)
         {
             return availableMoves.MovesFor(coordinate, board);
